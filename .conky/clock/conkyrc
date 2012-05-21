@@ -9,8 +9,9 @@ double_buffer yes
 no_buffers yes
 text_buffer_size 2048
 
+alignment bottom_left
 gap_x 60
-gap_y 780
+gap_y 160
 minimum_size 350 5
 maximum_width 620
 own_window no
@@ -31,7 +32,6 @@ draw_graph_borders no
 default_color white
 default_shade_color red
 default_outline_color green
-alignment top_left
 uppercase no
 override_utf8_locale yes
 use_spacer right
