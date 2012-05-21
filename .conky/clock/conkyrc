@@ -1,0 +1,58 @@
+background yes
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+#temperature_unit celsius
+
+double_buffer yes
+no_buffers yes
+text_buffer_size 2048
+
+gap_x 60
+gap_y 780
+minimum_size 350 5
+maximum_width 620
+own_window no
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+use_xft yes
+xftfont 123:size=8
+xftalpha 0.1
+total_run_times 0
+
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+default_color white
+default_shade_color red
+default_outline_color green
+alignment top_left
+uppercase no
+override_utf8_locale yes
+use_spacer right
+
+lua_load ~/.conky/clock/conky.lua
+# lua_draw_hook_pre draw_background
+
+# ${voffset 0}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}CPU1 ${offset 9}$color${cpu cpu1}%
+# ${voffset 0}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}CPU2 ${offset 9}$color${cpu cpu2}%
+# ${voffset 0}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}CPU3 ${offset 9}$color${cpu cpu3}%
+# ${voffset 0}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}CPU4 ${offset 9}$color${cpu cpu4}%
+# ${voffset 0}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}CPU5 ${offset 9}$color${cpu cpu5}%
+# ${voffset 0}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}CPU6 ${offset 9}$color${cpu cpu6}%
+# ${voffset 0}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}CPU7 ${offset 9}$color${cpu cpu7}%
+# ${voffset 0}${offset 12}${font Ubuntu:pixelsize=10}${color FFA300}CPU8 ${offset 9}$color${cpu cpu8}%
+
+# ${offset 12}${font Ubuntu:pixelsize=11}${color FFA300}ROOT ${offset 11}$color${fs_free /} / ${fs_size /}${offset 30}${color FFA300}RAM ${offset 15}$color$mem / $memmax${offset 30}${font Ubuntu:pixelsize=11}${color FFA300}CPU ${offset 17}$color${cpu cpu0}%
+# ${offset 12}${font Ubuntu:pixelsize=11}${color FFA300}HOME ${offset 9}$color${fs_free /home} / ${fs_size /home}${offset 30}${color FFA300}SWAP ${offset 9}$color$swap / $swapmax${offset 30}${color FFA300}NET ${offset 18}$color${upspeed wlan0} / ${downspeed wlan0}
+
+TEXT
+${color EAEAEA}${font Ubuntu:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color FFA300}${font Ubuntu:pixelsize=42}${time %d} ${voffset -15}${color EAEAEA}${font Ubuntu:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 24}${font Ubuntu:pixelsize=58}${offset -218}     ${time %A}${font}
+
+${offset 12}${font Ubuntu:pixelsize=11}${color FFA300}ROOT ${offset 11}$color${fs_free /} / ${fs_size /}${offset 30}${color FFA300}RAM ${offset 21}$color${lua_parse pad ${memperc}}%${offset 30}${font Ubuntu:pixelsize=11}${color FFA300}CPU ${offset 17}$color${cpu cpu0}%
+${offset 12}${font Ubuntu:pixelsize=11}${color FFA300}HOME ${offset 9}$color${fs_free /home} / ${fs_size /home}${offset 30}${color FFA300}SWAP ${offset 15}$color${lua_parse pad ${swapperc}}%${offset 33}${color FFA300}NET ${offset 18}$color${upspeed wlan0} / ${downspeed wlan0}

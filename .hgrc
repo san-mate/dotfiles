@@ -1,0 +1,19 @@
+[ui]
+username = Martin Santos <santos@tryolabs.com>
+
+[pager]
+attend = annotate, cat, diff, export, glog, log, shortlog, show, qdiff
+pager = LESS='FSRX' less
+
+[extensions]
+hgext.color = 
+hgext.pager =
+hgext.mq =  
+fetch =
+hgext.bookmarks =
+hggit =
+
+[alias]
+shortlog = log --template '{rev}:{node|short} {desc|firstline}\n'
+show = log -pr
+qstatus = status --rev -2:.
