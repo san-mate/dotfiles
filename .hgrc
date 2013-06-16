@@ -1,6 +1,7 @@
 [ui]
 username = Martin Santos <santos@tryolabs.com>
 merge = internal:merge
+ignore = ~/.hgignore
 
 [pager]
 attend = annotate, cat, diff, export, glog, log, shortlog, show, qdiff

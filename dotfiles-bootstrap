@@ -1,0 +1,35 @@
+#!/bin/bash
+
+[[ $1 = '-h' || -z $1 && -d ~/.dotfiles.git ]] && {
+    echo "curl -s https://github.com/san-mate/dotfiles/raw/master/dotfiles-bootstrap | bash -"
+    echo "wget --no-check-certificate -nv -O - https://github.com/san-mate/dotfiles/raw/master/dotfiles-bootstrap | bash -"
+    exit
+}
+
+set -e -x
+
+DOTFILES=$HOME/.dotfiles
+
+[[ -d $DOTFILES ]] \
+    || git clone git@github.com:san-mate/dotfiles.git $DOTFILES \
+    || git clone https://omab@github.com/san-mate/dotfiles.git $DOTFILES
+
+# Just link basic stuff (xmonad and others should be linked if needed)
+pushd $DOTFILES
+    git pull origin master
+popd
+
+link() {
+    rm -rf $HOME/$1;
+    ln -s $DOTFILES/$1 $HOME/$1
+}
+
+link .bashrc
+link .conkyrc
+link .vimrc
+link .hgrc
+link .hgignore
+link .gitconfig
+link .gitingnore
+link .xmonad
+link .fonts

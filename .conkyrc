@@ -1,1 +1,45 @@
-.conky/clock/conkyrc
+background yes
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+double_buffer yes
+no_buffers yes
+text_buffer_size 2048
+
+alignment bottom_left
+gap_x 60
+gap_y 60
+minimum_size 350 190
+maximum_width 620
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+use_xft yes
+xftfont 123:size=8
+xftalpha 0.1
+total_run_times 0
+
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+default_color white
+uppercase no
+override_utf8_locale yes
+use_spacer right
+
+color1 EAEAEA
+color2 FFA300
+
+TEXT
+${color1}${font Ubuntu:pixelsize=120}${time %H:%M}${font}${voffset -84}${offset 10}${color2}${font Ubuntu:pixelsize=42}${time %d} ${voffset -15}${color1}${font Ubuntu:pixelsize=22}${time  %B} ${time %Y}${font}${voffset 24}${font Ubuntu:pixelsize=58}${offset -218}     ${time %A}${font}
+
+${offset 12}${font Ubuntu:pixelsize=10}${color2}CPU1 ${offset 9}${color1}${cpu cpu1}% ${offset 12}${font Ubuntu:pixelsize=10}${color2}CPU2 ${offset 9}${color1}${cpu cpu2}% ${offset 12}${font Ubuntu:pixelsize=10}${color2}CPU3 ${offset 9}${color1}${cpu cpu3}% ${offset 12}${font Ubuntu:pixelsize=10}${color2}CPU4 ${offset 9}${color1}${cpu cpu4}%
+
+${offset 12}${font Ubuntu:pixelsize=11}${color2}ROOT ${offset 11}${color1}${fs_free /} / ${fs_size /}${offset 30}${color2}RAM ${offset 15}$color$mem / $memmax${offset 30}${font Ubuntu:pixelsize=11}${offset 30}${color2}NET ${offset 18}${color1}${upspeed wlan0} / ${downspeed wlan0}
+${offset 12}${font Ubuntu:pixelsize=11}${color2}HOME ${offset 9}${color1}${fs_free /home} / ${fs_size /home}${offset 30}${color2}SWAP ${offset 9}${color1}$swap / $swapmax
