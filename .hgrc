@@ -13,7 +13,6 @@ hgext.pager =
 hgext.mq =  
 fetch =
 hgext.bookmarks =
-hggit =
 
 [alias]
 shortlog = log --template '{rev}:{node|short} {desc|firstline}\n'

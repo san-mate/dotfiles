@@ -105,6 +105,9 @@ mykeys c@(XConfig {modMask = modm}) = M.fromList $
                                     -- Commands
                                     , ((modm,               xK_Return), spawn myTerminal)
                                     , ((modm,               xK_x     ), spawn myTerminal)
+                                    -- Swap Screens
+                                    , ((modm,               xK_r     ), swapNextScreen)
+                                    , ((modm,               xK_n     ), moveTo Next EmptyWS)
                                     ]
                                     ++
                                     -- mod-[1..9] @@ Switch to workspace N
