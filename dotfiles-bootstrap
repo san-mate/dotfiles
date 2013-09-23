@@ -12,7 +12,7 @@ DOTFILES=$HOME/.dotfiles
 
 [[ -d $DOTFILES ]] \
     || git clone git@github.com:san-mate/dotfiles.git $DOTFILES \
-    || git clone https://omab@github.com/san-mate/dotfiles.git $DOTFILES
+    || git clone https://san-mate@github.com/san-mate/dotfiles.git $DOTFILES
 
 # Just link basic stuff (xmonad and others should be linked if needed)
 pushd $DOTFILES
