@@ -30,6 +30,6 @@ link .vimrc
 link .hgrc
 link .hgignore
 link .gitconfig
-link .gitingnore
+link .gitignore
 link .xmonad
 link .fonts
