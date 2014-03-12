@@ -33,3 +33,6 @@ link .gitconfig
 link .gitignore
 link .xmonad
 link .fonts
+
+# Activate .gitignore
+git config --global core.excludesfile $HOME/.gitignore
