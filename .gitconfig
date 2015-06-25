@@ -3,14 +3,14 @@
     email = m.sanmate@gmail.com
 [github]
     user = san-mate
-    token = 
+    token =
 [color]
     branch = auto
     diff = auto
     status = auto
 [color "branch"]
     current = yellow reverse
-    local = yellow 
+    local = yellow
     remote = green
 [color "diff"]
     meta = yellow bold
@@ -21,3 +21,5 @@
     added = yellow
     changed = green
     untracked = cyan
+[core]
+    excludesfile = /home/ms/.gitignore

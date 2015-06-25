@@ -63,7 +63,7 @@ import System.Exit
 
 myWorkspaces = ["im", "www", "downloads", "music", "1", "2", "3", "4"]
 
-myTerminal = "gnome-terminal"
+myTerminal = "mate-terminal"
 
 myModMask = mod4Mask
 
@@ -91,11 +91,11 @@ mykeys c@(XConfig {modMask = modm}) = M.fromList $
                                     , ((modm              , xK_q     ), restart "xmonad" True)     -- Restart xmonad
                                     , ((modm              , xK_s     ), spawnSelected defaultGSConfig ["pidgin", "firefox",
                                                                                                        "google-chrome", "gedit",
-                                                                                                       "rhythmbox"])
+                                                                                                       "banshee"])
                                     -- *** Open file or folder
                                     , ((modm              , xK_f     ), runOrRaisePrompt defaultXPConfig)
                                     -- *** Rhythmbox controls
-                                    , ((modm,               xK_p     ), spawn "rhythmbox-client --play-pause")
+                                    , ((modm,               xK_p     ), spawn "banshee --toggle-playing")
                                     -- *** Misc focus
                                     , ((modm .|. shiftMask, xK_u     ), focusUrgent)
                                     , ((modm              , xK_z     ), toggleWS) -- Switch to previews focused workspace
@@ -131,8 +131,9 @@ myManageHooks = composeAll . concat $
     , [ className =? "Firefox" --> doShift "www" ]
     , [ className =? "Google-chrome" --> doShift "www" ]
     , [ className =? "Pidgin" --> doShift "im" ]
-    , [ className =? "Rhythmbox" --> doShift "music" ]
+    , [ title =? "Banshee Media Player" --> doShift "music" ]
     , [ title =? "JDownloader" --> doShift "downloads" ]
+    , [ title =? "Transmission" --> doShift "downloads" ]
     , [ className =? "Gimp" --> doCenterFloat ]
     , [ isDialog --> doCenterFloat ]
     , [ isFullscreen --> doFullFloat ]

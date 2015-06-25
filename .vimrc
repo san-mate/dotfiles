@@ -27,7 +27,7 @@ Bundle 'gmarik/vundle'
 " Bundles from GitHub repos:
 
 " Python and PHP Debugger
-Bundle 'fisadev/vim-debug.vim'
+" Bundle 'jaredly/vim-debug'
 " Better file browser
 Bundle 'scrooloose/nerdtree'
 " Code commenter
@@ -263,7 +263,7 @@ let g:tabman_focus  = 'tf'
 
 " use 256 colors when possible
 if &term =~? 'mlterm\|xterm\|screen-256'
-	let &t_Co = 256
+    let &t_Co = 256
     " color
     colorscheme fisa
 else
