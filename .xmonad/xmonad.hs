@@ -67,7 +67,8 @@ myTerminal = "mate-terminal"
 
 myModMask = mod4Mask
 
-myLayoutHook = smartBorders $ avoidStruts ( onWorkspace "im" (withIM (1/8) (Title "Buddy List") (Grid ||| tiled ||| tabs)) $
+myLayoutHook = smartBorders $ avoidStruts (
+                             onWorkspace "im" (withIM (1/8) (skypeRoster) (Grid ||| tiled ||| tabs) ||| withIM (1/8) (pidginRoster) (Grid ||| tiled ||| tabs)) $
                              onWorkspace "www" tabs
                              ( tiled ||| tabs ||| full ||| Grid ||| mtiled ||| threecol )
                             ) where
@@ -76,6 +77,8 @@ myLayoutHook = smartBorders $ avoidStruts ( onWorkspace "im" (withIM (1/8) (Titl
                                 tiled    = ResizableTall 1 (3/100) (60/100) []
                                 mtiled   = Mirror tiled
                                 threecol = ThreeCol 1 (3/100) (1/2)
+                                pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
+                                skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
 
 -- Additional keybindings
 mykeys c@(XConfig {modMask = modm}) = M.fromList $
@@ -89,9 +92,10 @@ mykeys c@(XConfig {modMask = modm}) = M.fromList $
 
                                     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess)) -- Quit xmonad
                                     , ((modm              , xK_q     ), restart "xmonad" True)     -- Restart xmonad
-                                    , ((modm              , xK_s     ), spawnSelected defaultGSConfig ["pidgin", "firefox",
-                                                                                                       "google-chrome", "gedit",
-                                                                                                       "banshee"])
+                                    , ((modm              , xK_s     ), spawnSelected defaultGSConfig ["firefox", "mate-calc",
+                                                                                                       "google-chrome",
+                                                                                                       "banshee", "skype",
+                                                                                                       "popcorn-time"])
                                     -- *** Open file or folder
                                     , ((modm              , xK_f     ), runOrRaisePrompt defaultXPConfig)
                                     -- *** Rhythmbox controls
@@ -131,6 +135,8 @@ myManageHooks = composeAll . concat $
     , [ className =? "Firefox" --> doShift "www" ]
     , [ className =? "Google-chrome" --> doShift "www" ]
     , [ className =? "Pidgin" --> doShift "im" ]
+    , [ className =? "Skype" --> doShift "im" ]
+    , [ title =? "Popcorn Time" --> doShift "downloads" ]
     , [ title =? "Banshee Media Player" --> doShift "music" ]
     , [ title =? "JDownloader" --> doShift "downloads" ]
     , [ title =? "Transmission" --> doShift "downloads" ]
@@ -144,6 +150,7 @@ main = do
        xmonad $ withUrgencyHook NoUrgencyHook
               $ ewmh gnomeConfig   { manageHook         = manageHook gnomeConfig <+> myManageHooks
                                    , layoutHook         = myLayoutHook
+                                   , handleEventHook    = fullscreenEventHook
                                    , workspaces         = myWorkspaces
                                    , terminal           = myTerminal
                                    , modMask            = myModMask

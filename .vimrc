@@ -37,7 +37,7 @@ Bundle 'majutsushi/tagbar'
 " Code and files fuzzy finder
 Bundle 'kien/ctrlp.vim'
 " Zen coding
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 " Git integration
 Bundle 'motemen/git-vim'
 " Tab list panel
