@@ -107,3 +107,6 @@ SRC=/home/santos/src
 #export PYTHONPATH=:/home/santos/workspace/wsar/src/django-tastypie/:$PYTHONPATH
 #export PYTHONPATH=:$SRC/djangotoolbox/:$SRC/django-mailchimp/:$PYTHONPATH
 . /usr/share/autojump/autojump.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

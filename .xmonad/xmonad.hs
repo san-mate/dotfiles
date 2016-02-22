@@ -133,7 +133,7 @@ mykeys c@(XConfig {modMask = modm}) = M.fromList $
 myManageHooks = composeAll . concat $
     [ [manageDocks]
     , [ className =? "Firefox" --> doShift "www" ]
-    , [ className =? "Google-chrome" --> doShift "www" ]
+    , [ className =? "google-chrome" --> doShift "www" ]
     , [ className =? "Pidgin" --> doShift "im" ]
     , [ className =? "Skype" --> doShift "im" ]
     , [ title =? "Popcorn Time" --> doShift "downloads" ]
