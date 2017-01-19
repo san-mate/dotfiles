@@ -78,7 +78,7 @@ myLayoutHook = smartBorders $ avoidStruts (
                                 mtiled   = Mirror tiled
                                 threecol = ThreeCol 1 (3/100) (1/2)
                                 pidginRoster    = And (ClassName "Pidgin") (Role "buddy_list")
-                                skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "Chats")) `And` (Not (Role "CallWindowForm"))
+                                skypeRoster     = (ClassName "Skype") `And` (Not (Title "Options")) `And` (Not (Role "ConversationsWindow")) `And` (Not (Role "CallWindow"))
 
 -- Additional keybindings
 mykeys c@(XConfig {modMask = modm}) = M.fromList $
@@ -92,10 +92,11 @@ mykeys c@(XConfig {modMask = modm}) = M.fromList $
 
                                     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess)) -- Quit xmonad
                                     , ((modm              , xK_q     ), restart "xmonad" True)     -- Restart xmonad
-                                    , ((modm              , xK_s     ), spawnSelected defaultGSConfig ["firefox", "mate-calc",
-                                                                                                       "google-chrome",
-                                                                                                       "banshee", "skype",
-                                                                                                       "popcorn-time"])
+                                    , ((modm              , xK_s     ), spawnSelected defaultGSConfig ["google-chrome",
+                                                                                                       "firefox",
+                                                                                                       "banshee",
+                                                                                                       "popcorn-time",
+                                                                                                       "skype"])
                                     -- *** Open file or folder
                                     , ((modm              , xK_f     ), runOrRaisePrompt defaultXPConfig)
                                     -- *** Rhythmbox controls
@@ -133,7 +134,7 @@ mykeys c@(XConfig {modMask = modm}) = M.fromList $
 myManageHooks = composeAll . concat $
     [ [manageDocks]
     , [ className =? "Firefox" --> doShift "www" ]
-    , [ className =? "google-chrome" --> doShift "www" ]
+    , [ className =? "Google-chrome" --> doShift "www" ]
     , [ className =? "Pidgin" --> doShift "im" ]
     , [ className =? "Skype" --> doShift "im" ]
     , [ title =? "Popcorn Time" --> doShift "downloads" ]
